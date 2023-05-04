@@ -1,0 +1,16 @@
+{% if widget.is_initial %}
+    <p class="form-control-label {{ widget.label_class }}">{{ widget.initial_text }}</p>
+{% elif widget.input %}
+    {% if widget.template_with_initial %}
+        <p class="form-control-label {{ widget.label_class }}">{{ widget.initial_text }}</p>
+    {% endif %}
+    {{ widget.input }}
+    {% if not widget.is_required %}
+        <label for="{{ widget.checkbox_id_for }}" class="form-check-label {{ widget.label_class }}">
+            {{ widget.clear_checkbox_label }}
+        </label>
+    {% endif %}
+{% endif %}
+{% if widget.errors %}
+    <span class="form-control-error">{{ widget.errors.as_text }}</span>
+{% endif %}

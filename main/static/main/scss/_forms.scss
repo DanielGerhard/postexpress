@@ -1,0 +1,94 @@
+.page-form-with-card {
+    background-color: var(--cor-apoio);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100svh;
+
+    .page-card {
+        display: grid;
+        overflow: hidden;
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 6px;
+        background-color: var(--cor-primaria);
+
+        @include media-breakpoint-down(md) {
+            grid-template-columns: repeat(1, 1fr);
+
+        }
+
+        .img-block {
+            picture {
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                .credito {
+                    position: absolute;
+                    bottom: 5px;
+                    right: 5px;
+                    z-index: 5;
+                    text-shadow: 1px 1px 1px black;
+                    color: #fff;
+                }
+            }
+        }
+
+        .form-block {
+            padding: 110px 65px;
+
+            .logo {
+                svg {
+                    width: 183px;
+                    margin-bottom: 30px;
+                }
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                box-shadow: 2px 2px 8px 1px #0000007d;
+                border-radius: 6px;
+                align-items: center;
+                padding: 30px;
+                background-color: var(--cor-auxiliar);
+
+                .for-text {
+                    font-size: 11px;
+                }
+
+                .asteriskField {
+                    display: none;
+                }
+
+                .alert {
+                    font-size: 12px;
+                }
+
+                a {
+                    color: var(--cor-destaque);
+
+
+                }
+
+                .btn-success {
+                    margin-top: 10px;
+                    background-color: var(--cor-secundaria);
+                    border-color: var(--cor-secundaria);
+                    width: 90%;
+
+                }
+            }
+        }
+    }
+}
