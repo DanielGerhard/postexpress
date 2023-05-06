@@ -23,46 +23,57 @@
     {% block header %}
     <nav class="navbar navbar-expand lg">
         <div class="container fluid">
-            <div>
-                <ul class="navbar-nav">
-                    <li class="nav-item user">
-                        <?xml version="1.0" encoding="utf-8"?>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><g transform="translate(12 4)"><rect fill="none"/><path d="M2,13A11,11,0,1,1,13,24,11,11,0,0,1,2,13ZM13,6.4a4.4,4.4,0,1,0,4.4,4.4A4.4,4.4,0,0,0,13,6.4Zm5.623,11a1.448,1.448,0,0,1,.034,2.345,8.8,8.8,0,0,1-11.282.025A1.452,1.452,0,0,1,7.4,17.413a5.27,5.27,0,0,1,.852-.443A12.72,12.72,0,0,1,13,16.3a12.967,12.967,0,0,1,4.765.655A5.2,5.2,0,0,1,18.623,17.4Z" transform="translate(-14 -6)" fill="#fff" fill-rule="evenodd"/></g></svg>
-                        <span class="navbar-text">{{user.username}}</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="/home" class="">
-                            Feed
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="/meus_posts" class="">
-                            Meus Posts
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        {% if user.is_authenticated %}
-                    </li>
-                    <li class="nav_item">
-                        <a href="/logout">Logout</a>
-                    </li>
-                    {% else %}
-                    <a href="/login" class="">
-                        Login
+            <ul class="navbar-nav">
+                <li class="nav-item user">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                        <g transform="translate(12 4)">
+                            <rect fill="none" />
+                            <path
+                                d="M2,13A11,11,0,1,1,13,24,11,11,0,0,1,2,13ZM13,6.4a4.4,4.4,0,1,0,4.4,4.4A4.4,4.4,0,0,0,13,6.4Zm5.623,11a1.448,1.448,0,0,1,.034,2.345,8.8,8.8,0,0,1-11.282.025A1.452,1.452,0,0,1,7.4,17.413a5.27,5.27,0,0,1,.852-.443A12.72,12.72,0,0,1,13,16.3a12.967,12.967,0,0,1,4.765.655A5.2,5.2,0,0,1,18.623,17.4Z"
+                                transform="translate(-14 -6)" fill="#fff" fill-rule="evenodd" />
+                        </g>
+                    </svg>
+                    <span class="navbar-text">{{user.username}}</span>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/home" class="">
+                        Feed
                     </a>
-                    {% endif %}
+                </li>
+
+                <li class="nav-item">
+                    <a href="/meus_posts" class="">
+                        Meus Posts
+                    </a>
+                </li>
+            </ul>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M6.1018 8C5.02785 8 4.45387 9.2649 5.16108 10.0731L10.6829 16.3838C11.3801 17.1806 12.6197 17.1806 13.3169 16.3838L18.8388 10.0731C19.5459 9.2649 18.972 8 17.898 8H6.1018Z"
+                            fill="#fff" />
+                    </svg>
+                </button>
+                <ul class="dropdown-menu nav-item" aria-labelledby="dropdownMenuButton">
+                    <li class="dropdown-item">
+
+                        <a href="/logout">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                                <path
+                                    d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z" />
+                            </svg>
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -75,8 +86,14 @@
             {% block content %} {% endblock content %}
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
 

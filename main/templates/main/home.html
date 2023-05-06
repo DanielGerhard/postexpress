@@ -8,40 +8,43 @@ Home
 {% block content %}
 
 {% block add_post %}
-<!-- ADICIONAR POST -->
-{% load crispy_forms_tags %}
-<div class="add-post">
-    <form method="post">
-        {% csrf_token %}{{ form|crispy }}
-        <button type="submit" class="btn btn-success">Postar</button>
-    </form>
-</div>
-{% endblock %}
 
-<!-- LISTAGEM DE POSTS -->
-{% for post in posts %}
-<div class="card mt-2">
-    <div class="card-header"><strong>@{{ post.author.username }}</strong></div>
-    <div class="card-body d-flex flex-row justify-content-between">
-        <div>
-            <h5 class="card-title">{{post.title}}</h5>
-            <p>{{post.description}}</p>
-        </div>
-        {% if user == post.author %}
-        <form method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="form-type" value="delete">
-            <button type="submit" class="btn btn-danger" name="post-id" value="{{post.id}}">
-                DELETE
-            </button>
+<div class="feed-wrapper">
+    <!-- ADICIONAR POST -->
+    {% load crispy_forms_tags %}
+    <div class="add-post">
+        <form method="post">
+            {% csrf_token %}{{ form|crispy }}
+            <button type="submit" class="btn btn-success">Postar</button>
         </form>
-        {% endif%}
     </div>
-    <div class="card-footer text-muted">{{post.created_at}}</div>
+    {% endblock %}
+
+    <!-- LISTAGEM DE POSTS -->
+    {% for post in posts %}
+    <div class="card mt-2">
+        <div class="card-header"><strong>@{{ post.author.username }}</strong></div>
+        <div class="card-body d-flex flex-row justify-content-between">
+            <div>
+                <h5 class="card-title">{{post.title}}</h5>
+                <p>{{post.description}}</p>
+            </div>
+            {% if user == post.author %}
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="form-type" value="delete">
+                <button type="submit" class="btn btn-danger" name="post-id" value="{{post.id}}">
+                    DELETE
+                </button>
+            </form>
+            {% endif%}
+        </div>
+        <div class="card-footer text-muted">{{post.created_at}}</div>
+    </div>
+    {% empty %}
+    <p>Não há nenhum post aqui :(</p>
+    <a href="/create_post">Clique aqui para criar o primeiro!</a>
+    {% endfor %}
 </div>
-{% empty %}
-<p>Não há nenhum post aqui :(</p>
-<a href="/create_post">Clique aqui para criar o primeiro!</a>
-{% endfor %}
 
 {% endblock %}

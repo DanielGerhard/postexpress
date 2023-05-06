@@ -13,7 +13,12 @@
 @import 'cores';
 @import 'animations';
 @import 'alerts';
-@import 'header';e
+@import 'header';
 @import 'footer';
 @import 'forms';
 @import 'pages';
+
+
+body{
+    background-color: #afdfc4;
+}
